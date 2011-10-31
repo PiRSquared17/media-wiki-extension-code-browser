@@ -1,0 +1,147 @@
+please refer to:
+
+http://www.mediawiki.org/wiki/Extension:CodeBrowser
+
+
+
+{{Extension
+|name        = CodeBrowser
+|status      = beta
+|type        = tag
+|username    = driedler
+|author      = [http://www.danriedler.com/ Dan Riedler]
+|image       = CodeBrowserScreenShot.gif
+|version     = 0.1b
+|update      = October 2011
+|mediawiki   = 1.17+
+|download    = [[#Code|Code]]
+|readme      = 
+|changelog   =
+|description = Browse and display source code within page
+|parameters  = $wg_codebrowser_config
+|rights      =
+|license     = public domain
+|example     =
+}}
+
+
+== Summary ==
+This extension allows users to browse and display syntax-highlighted source code within a page.
+Currently the source code must be in a publicly accessible directory of the same server on which this extension is running.
+
+
+== Quick Example ==
+On a mediawiki page, add the following tag:
+
+<source lang="xml"><CodeBrowser startdir="path_relative_to_web_root"  /></source>
+
+where the attribute 'startdir' is a path to a source code directory relative to the web site root directory.
+
+== Live Demo ==
+A live demo of this extension can be see here:
+[http://danriedler.com/wiki/CodeBrowser_Demo CodeBrowser Demo]
+
+== Installation ==
+
+=== Pre-Install Requirements ===
+This extension leverages two other extensions:
+# [http://www.mediawiki.org/wiki/Extension:Include Extension:Include]
+# [http://www.mediawiki.org/wiki/Extension:SyntaxHighlight_GeSHi SyntaxHighlight_GeSHi]
+
+These must be downloaded an installed first. 
+Simply download each of these extension and upload them to your [mediawiki path]/extensions directory.
+
+=== Install ===
+* Download the CodeBrowser extension from [HERE]
+* Extract and upload the entire CodeBrowser directory to your [mediawiki path]/extensions directory on your server (i.e. create a folder on your server: [mediawiki path]/extensions/CodeBrowser, and copy the files and folders in your downloaded CodeBrowser folder to your newly created folder on your server)
+* Add the following lines to your LocalSettings.php
+<source lang="php">
+require_once("$IP/extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php");
+require_once("$IP/extensions/secure-include.php");                                                                                                                       
+require_once("$IP/extensions/CodeBrowser/CodeBrowser.php");
+$wg_codebrowser_config['basedir'] = "absolute_path_to_your_webroot";
+</source>
+* Modify $wg_codebrowser_config['basedir'] to be the absolute path to your webroot (see [[http://www.mediawiki.org/wiki/Extension:CodeBrowser#HowTo_Find_Absolute_Webroot_Path HowTo Find Absolute Webroot Path]] for more info).
+* In codebrowser.css, modify the paths:
+<source lang="css">
+background: #ffffff url(/w/extensions/CodeBrowser/images/captop.jpg) repeat-x;
+background: #ffffff url(/w/extensions/CodeBrowser/images/tbar.gif) repeat-x;
+background: #ffffff url(/w/extensions/CodeBrowser/images/tbov.gif) repeat-x;
+background: #fff url(/w/extensions/CodeBrowser/images/bbar.gif) repeat-x;
+</source>
+to the actual paths on your server (basically change '/w/' to where ever you installed mediawiki on your server).
+NOTE: this is the same path as: $wgScriptPath in LocalSettings.php
+* The extension is now installed, see the next section [[http://www.mediawiki.org/wiki/Extension:CodeBrowser#How_to_Use_This_Extension How to Use This Extension]]
+
+== How to Use This Extension ==
+To use this extension, simply include the following tag in a mediawiki page:
+<source lang="xml">
+<CodeBrowser startdir="path_relative_to_web_root"  />
+</source>
+and set 'startdir' to whichever directory that contains source code you want the user to browse.
+
+=== Attributes ===
+This extension has the following attributes:
+
+==== startdir (required) ====
+:; specifies the path to project relative to the domain root
+:; Example Usage:
+:: Say you have a website: <nowiki>http://mywiki.com</nowiki>
+:: Also say you have a project with source code at: 
+:: <nowiki>http://mywiki.com/projects/my_project/src</nowiki> 
+:: Then, to let users browse this code on your wiki, simply add the following to a wiki page:
+<source lang="xml">
+<CodeBrowser startdir="projects/my_project/src"  />
+</source>
+
+==== refpage (optional) ====
+:; places link to page on footer of table
+:; Example Usage:
+:: Say you have a project page: <nowiki>http://mywiki.com/wiki/Projects:My_Project</nowiki>
+:: You can add a reference link to this page at the bottom of the code browsing portal by adding the : following attribute:
+<source lang="xml">
+<CodeBrowser startdir="projects/my_project/src" refpage="Projects:My_Project" />
+</source>
+
+=== Parameters ===
+
+Various parameters can be adjusted from this extension by modifying the:
+<source lang="php">
+$wg_codebrowser_config[]
+</source>
+parameter in LocalSettings.php
+
+* basedir - this is the absolute path to your webroot
+* lang - the language (currently only english is supported)
+* open_in_new_window - when opening a source file, open in new window? true/false
+* time_format - the day/time format displayed for source files (see [http://php.net/manual/en/function.date.php Date/Time Format] for more info)
+* hidden_dirs - array containing directories to hide
+* supported_files - supported file types. The currently supported files are:
+** asp
+** aspx 
+** bat
+** c
+** cpp
+** cs
+** h
+** htm
+** html
+** java
+** js
+** m
+** php
+** py
+** rtf
+** txt
+** xml
+** xsd
+
+== Frequently Asked Questions ==
+
+=== HowTo Find Absolute Webroot Path ===
+This is the absolute path to your when site's root directory.
+On a linux/apache server setup, it looks something like:
+<pre>
+/home/your_user_name/public_html/
+</pre>
+Note that the leading slash is required on a linux setup.
