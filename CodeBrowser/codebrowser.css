@@ -1,0 +1,162 @@
+/* General styles */
+#codebrowser_frame {
+    border: 1px solid #CDD2D6;
+    text-align: left;
+    position: relative;
+    margin: 0 auto;
+    min-width: 250px;
+    overflow: hidden;
+    width: 98%;
+}
+
+#codebrowser_error {
+    max-width: 450px;
+    background-color: #FFE4E1;
+    color: #000000;
+    padding: 7pt;
+    position: relative;
+    margin: 10pt auto;
+    text-align: center;
+    border: 1px dotted #CDD2D6;
+}
+
+/* Info area */
+#codebrowser_info {
+    color: #000000;
+    font-family: Verdana;
+    max-width: 680px;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+/* Breadcrumbs */
+#codebrowser_breadcrumbs {
+    display: block;
+    padding: 1px 3px;
+    color: #cccccc;
+    font-size: small;
+}
+
+#codebrowser_breadcrumbs a {
+    display: inline-block;
+    color: #cccccc;
+    padding: 2px 0;
+    font-size: medium;
+    margin-left: 20px;
+}
+
+
+
+
+/* File list */
+table.codebrowser_table {
+    font: 80% Verdana, Arial, Helvetica, sans-serif;
+    color: #000;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid #666666;
+    border-top: none;   
+    width: 100%;
+}
+
+
+table.codebrowser_table a {
+    text-decoration: underline;
+}
+table.codebrowser_table a:visited {
+    text-decoration: none;
+}
+table.codebrowser_table tr.odd {
+    background-color: #ebf3ff;
+}
+table.codebrowser_table tr a {
+    color: #000000;
+}
+table.codebrowser_table tr:hover a {
+    color: #ffffff;
+}
+table.codebrowser_table tr:hover, tr.odd:hover {
+    background-color: #3d80df;
+    color: #ffffff;
+}
+
+table.codebrowser_table tr.source_code:hover {
+	background-color: #ffffff;
+}
+
+
+table.codebrowser_table caption {
+    height: 45px;
+    line-height: 44px;
+    color: #60634E;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-left: -1px;
+    background: #ffffff url(/w/extensions/CodeBrowser/images/captop.jpg) repeat-x;
+    background-position: 50% top;
+    border-left: 2px solid #616161;
+    border-right: 2px solid #616161;
+}
+
+table.codebrowser_table caption a {
+	margin-left: 20px;
+	font-size: medium;
+}
+
+
+table.codebrowser_table a.refpage {
+     color: #3d80df;
+     font-weight: bold;
+     text-align: right;
+}
+
+table.codebrowser_table thead tr th {
+    font-size: 105%;
+    color: #000;
+    background: #ffffff url(/w/extensions/CodeBrowser/images/tbar.gif) repeat-x;
+    height: 33px;
+}
+table.codebrowser_table thead tr th:hover {
+    background: #ffffff url(/w/extensions/CodeBrowser/images/tbov.gif) repeat-x;
+    
+}
+table.codebrowser_table tr {
+    vertical-align: top;
+}
+table.codebrowser_table tr,th,td {
+    padding: .75em;
+}
+table.codebrowser_table td {
+    border-left: 1px solid #dadada;
+}
+table.codebrowser_table td.icon {
+    width: 25px;
+    padding-top: 3px;
+    padding-bottom: 1px;
+}
+table.codebrowser_table td.size {
+    width: 100px;
+    text-align: right;
+}
+table.codebrowser_table td.changed {
+   width: 150px;
+    text-align: center;
+}
+
+table.codebrowser_table tfoot tr {
+    background: #fff url(/w/extensions/CodeBrowser/images/bbar.gif) repeat-x;
+}
+table.codebrowser_table tfoot td, tfoot th{
+    color: #000;
+    border: 0px;
+}
+
+table.codebrowser_table img {
+    border: 0;
+}
