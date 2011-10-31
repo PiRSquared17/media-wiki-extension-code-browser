@@ -146,7 +146,9 @@ $wg_codebrowser_config['supported_files'] = array(
 "php",
 "py",
 "rtf",
-"txt"
+"txt",
+"xml",
+"xsd"
 );
 
 
