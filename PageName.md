@@ -1,0 +1,1 @@
+#REDIRECT http://www.mediawiki.org/wiki/Extension:CodeBrowser
